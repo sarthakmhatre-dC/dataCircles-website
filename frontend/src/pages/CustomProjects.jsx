@@ -19,10 +19,11 @@ import SocialProof from "../components/common/SocialProof";
 import ServicesSection from "../components/common/ServicesSection";
 import ProcessSection from "../components/common/GrowthFramework";
 import GrowthFramework from "../components/common/GrowthFramework";
-import LightLeak from "/assets/LightLeak.png"
+import LightLeak from "/assets/LightLeak.png";
+import ProjectsSection from "../components/common/ProjectsSection";
 const CustomProjects = () => {
     const yahaKaCTA = "/assets/dashboard1.png";
-    const salesImage = "/assets/Deals-KanbanVie4w.png";
+    const salesImage = "/assets/Home/ContactsKanban.png";
     const abhishek = "/assets/Testimonials/AbhishekPatankar-NittyGrittyMedia.mp4";
     const puru =
         "/assets/Testimonials/PuruBindal-ShreeMaheshTimberTradingCompany.mp4";
@@ -219,6 +220,7 @@ const CustomProjects = () => {
                         },
                     ]}
                      />
+                    <ProjectsSection />
                 </div>
             </div>
 
@@ -297,7 +299,7 @@ const CustomProjects = () => {
             {/* -------------------------------------------------- */}
             {/* SECTION 7: SIMPLE CTA SECTION (Your Demo Layout)  */}
             {/* -------------------------------------------------- */}
-            <section className="w-full max-w-7xl mb-20 items-center text-center flex flex-col">
+            <section className="w-full max-w-7xl justify-center items-center text-center flex flex-col h-auto">
                 <LabelPill label="Start Today" dotColor="bg-blue-500" className="mb-10" />
                 <SimpleCTA
                     heading={

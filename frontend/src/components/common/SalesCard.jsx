@@ -3,7 +3,7 @@
 export default function SalesCard({ image }) {
   return (
     <section className="w-full max-w-7xl mx-auto py-2 h-auto">
-      <div className="bg-blue-100 h-100 rounded-xl grid grid-cols-1 md:grid-cols-2 gap-6 ">
+      <div className="bg-[radial-gradient(circle,#E7EFFF_0%,#E9EDF7_100%)] h-102 rounded-xl grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Section */}
         <div>
           <h3 className="heading-3 mb-5 tracking-[-0.25rem] mt-10 ml-10">Custom Plans for Large Teams</h3>
@@ -22,7 +22,7 @@ export default function SalesCard({ image }) {
           <img
             src={image}
             alt="Product UI screenshot"
-            className="rounded-lg shadow-sm w-150 h-[350px] "
+            className="rounded-lg shadow-sm w-fit h-fit"
           />
         </div>
       </div>

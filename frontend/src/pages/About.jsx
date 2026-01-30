@@ -14,7 +14,7 @@ import LabelPill from "../components/common/LabelPill";
 import HeroBackground from "../components/HeroBackground";
 
 export default function About() {
-  const yahaKaCTA = "/assets/dashboard1.png";
+  const yahaKaCTA = "/assets/Home/ContactsSales.png";
   const nayaImage = "/assets/Home/UserDashboard.png";
   return (
     <>
@@ -43,7 +43,7 @@ export default function About() {
         {/* -------------------------------------------------- */}
         {/* SECTION 2: TWO COLUMN COMPANY INTRODUCTION         */}
         {/* -------------------------------------------------- */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto mb-30 mt-30">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto mb-30 mt-20">
           {/* LEFT — Short Info */}
           <div>
             <p className="text-blue-500 heading-5 mb-8 font-medium">Who We Are</p>
@@ -476,7 +476,7 @@ export default function About() {
                 },
               ]}
               image={yahaKaCTA}
-              className="px-4 md:px-6 max-w-7xl py-12 md:py-16 items-center"
+              className="px-4 md:px-6 max-w-7xl pt-12 items-center"
             />
           </div>
         </section>

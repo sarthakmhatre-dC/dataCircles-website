@@ -46,7 +46,7 @@ export default function SimpleCTA({
           <img
             src={image}
             alt="cta visual"
-            className="rounded-xl border border-gray-200 shadow-sm w-full object-cover h-100 md:h-200"
+            className="rounded-xl border border-gray-200 shadow-sm object-cover w-fit h-auto p-3"
           />
           {/* Fade overlay - bottom 20% */}
           <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-linear-to-t from-white via-white/90 to-transparent rounded-xl" />

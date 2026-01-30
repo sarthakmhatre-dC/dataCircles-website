@@ -64,7 +64,7 @@ const PLANS_FOR_TABLE = [
   { id: "business", name: "Business" },
 ];
 
-const yahaKaCTA = "/assets/dashboard1.png";
+const yahaKaCTA = "/assets/Home/ContactsKanban.png";
 
 export default function Pricing() {
   return (
@@ -167,7 +167,7 @@ export default function Pricing() {
             { label: "Book a Demo", href: "/book-a-demo" },
           ]}
           image={yahaKaCTA}
-          className="max-w-5xl mx-auto"
+          className="max-w-7xl mx-auto"
         />
       </section>
     </main>

@@ -31,6 +31,13 @@ export default function Contact() {
           our team is just a message away
         </p>
 
+        {/* 🔽 RESPONSIVE CHANGE: stack buttons on mobile */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10 text-sm">
+            <button className="px-6 py-2 bg-blue-500 text-white rounded-3xl hover:bg-blue-800 w-full sm:w-auto h-10">
+              See how it works
+            </button>
+        </div>
+
         {/* Large hero image placeholder */}
         {/* <div className="w-full h-72 md:h-96 bg-gray-200 rounded-xl mx-auto" /> */}
       </section>

@@ -1,0 +1,64 @@
+Mode	Layout
+1	Image Left → Text Right
+2	Image Right → Text Left
+3	Text Top → Image Bottom (Heading Left, Para Right)
+4	Text Top → Image Bottom (Heading Centered)
+5	Image Top → Text Bottom
+6	Custom Free Mode (No enforced layout — dev can control via className)
+
+
+FeatureBlock provides reusable, flexible layouts for “Image + Text” sections used across 50+ feature pages (CRM, Invoice, HR, Analytics, etc).
+
+It prevents repetitive layouts and keeps all feature pages consistent.
+
+📐 Supported Layout Modes
+Mode	Layout Description
+1	Image Left → Text Right
+2	Image Right → Text Left
+3	Text Top → Image Bottom (left aligned)
+4	Text Top → Image Bottom (center aligned)
+5	Image Top → Text Bottom
+6	Fully custom, no auto layout — parent controls via Tailwind
+
+
+
+AS U CAN SEE: 
+1️⃣ "image-left"
+
+📷 Image → Left
+📝 Text → Right
+
+Classic product overview section.
+
+2️⃣ "image-right"
+
+📝 Text → Left
+📷 Image → Right
+
+Mirror of layout 1.
+
+3️⃣ "text-top-image-bottom"
+
+📝 Text → Top (heading → paragraph)
+📷 Image → Bottom
+
+Perfect for "explainer-style" blocks.
+
+4️⃣ "image-top-text-bottom"
+
+📷 Image → Top
+📝 Text → Bottom
+
+Good for mobile-first design patterns.
+
+5️⃣ "centered"
+
+🎯 Center-aligned text + centered image
+Used for announcing new features / hero-like sections.
+
+6️⃣ "text-left-image-below" (your missing one)
+
+📝 Heading left + paragraph right (same row)
+📷 Image below (full width)
+
+This is very common in SaaS pages (example: Linear, Notion, Stripe).

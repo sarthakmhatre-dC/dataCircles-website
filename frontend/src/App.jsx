@@ -31,7 +31,6 @@ import SecurityCompliance from "./pages/SecurityCompliance";
 import LightRays from "./components/ui/LightRays";
 import ScrollToTop from "./components/ScrollToTop";
 function App() {
-  const Frontend_Url = import.meta.env.VITE_APP_URL;
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -54,13 +53,13 @@ function App() {
           <Route
             path="/login"
             element={
-              <Navigate to="http://localhost:5173/" replace />
+              <Navigate to="https://datacircles.netlify.app/login" replace />
             }
           />
           <Route
             path="/signup"
             element={
-              <Navigate to="http://localhost:5173/" replace />
+              <Navigate to="https://datacircles.netlify.app/signup" replace />
             }
           />
 

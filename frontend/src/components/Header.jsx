@@ -131,7 +131,7 @@ export default function Header() {
             </Link>
 
             <Link
-              to="/signup"
+              to="https://datacircles.netlify.app/signup"
               className="rounded-full bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all whitespace-nowrap shrink-0"
               style={{
                 padding: isScrolled
@@ -175,8 +175,8 @@ export default function Header() {
       {/* MOBILE MENU */}
       <div
         className={`lg:hidden fixed left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm rounded-2xl bg-black/95 backdrop-blur-xl border border-gray-800/60 shadow-2xl shadow-black/50 transition-all duration-300 ${isScrolled
-            ? "top-[4.25rem] sm:top-[4.5rem]"
-            : "top-[4.75rem] sm:top-20"
+            ? "top-17 sm:top-18"
+            : "top-19 sm:top-20"
           } ${open
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"

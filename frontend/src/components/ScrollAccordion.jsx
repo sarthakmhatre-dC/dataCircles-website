@@ -222,7 +222,7 @@ export default function ScrollAccordion() {
                       alt={item.label}
                       className="
                         h-fit w-fit object-cover p-3
-                        [mask-image:linear-gradient(to_top,transparent_0%,black_20%,black_100%)]
+                        mask-[linear-gradient(to_top,transparent_0%,black_20%,black_100%)]
                         [-webkit-mask-image:linear-gradient(to_top,transparent_0%,black_20%,black_100%)]
                       "
                       loading="lazy"

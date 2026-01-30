@@ -250,6 +250,13 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* CARD 1 */}
             <div className="bg-gray-100 rounded-xl p-8 h-[380px] flex flex-col justify-end">
+              <div className="mb-2">
+                <img
+                  src="/assets/about/EmpowerMSMEs.png" // update path if needed
+                  alt="Empower Indian MSMEs"
+                  className="w-200 mx-auto"
+                />
+              </div>
               <h3 className="heading-5 tracking-[-0.125rem] font-medium mb-2">Empower Indian MSMEs</h3>
               <p className="para-5 text-gray-600">
                 To give Indian micro, small, and mid-sized businesses access to
@@ -260,6 +267,13 @@ export default function About() {
 
             {/* CARD 2 */}
             <div className="bg-gray-100 rounded-xl p-8 h-[380px] flex flex-col justify-end">
+              <div className="mb-2">
+                <img
+                  src="/assets/about/SmallTeams.png" // update path if needed
+                  alt="Built Only for Small Teams"
+                  className="w-200 mx-auto"
+                />
+              </div>
               <h3 className="heading-5 tracking-[-0.125rem] font-medium mb-2">
                 Built Only for Small Teams</h3>
               <p className="para-5 text-gray-600">
@@ -272,11 +286,11 @@ export default function About() {
 
             {/* CARD 3 */}
             <div className="bg-gray-100 rounded-xl p-8 h-[380px] flex flex-col justify-end">
-              <div>
+              <div className="mb-2">
                 <img
                   src="/assets/about/DataSecurity.png" // update path if needed
                   alt="Data Safety"
-                  className="w-[50rem] mx-auto"
+                  className="w-200 mx-auto"
                 />
               </div>
               <div>

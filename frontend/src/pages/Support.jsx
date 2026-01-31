@@ -28,7 +28,7 @@ export default function Support() {
   return (
     <main className="text-dctext px-6">
       {/* HEADER */}
-      <section className="max-w-7xl mx-auto text-center mb-30">
+      <section className="max-w-7xl mx-auto text-center pb-30">
         <LabelPill
           label="DataCircle's Support System"
           dotColor="bg-blue-500"
@@ -40,7 +40,7 @@ export default function Support() {
       </section>
 
       {/* CONTACT CARD */}
-      <Card className="max-w-6xl mx-auto  border border-dcprimary-light shadow-sm mb-10">
+      <Card className="max-w-6xl mx-auto  border border-dcprimary-light shadow-sm">
         <CardHeader>
           <CardTitle className="heading-3 tracking-[-0.125rem]">Contact Us</CardTitle>
         </CardHeader>
@@ -60,7 +60,7 @@ export default function Support() {
       </Card>
 
       {/* FAQ */}
-      <section className="max-w-7xl mx-auto mb-30">
+      <section className="max-w-7xl mx-auto pb-30 pt-30">
         <FAQSection
           title="Start making your business easier with DataCircles"
           subtitle="Here are answers to some common questions about Support"

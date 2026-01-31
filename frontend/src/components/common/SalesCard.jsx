@@ -2,7 +2,7 @@
 
 export default function SalesCard({ image }) {
   return (
-    <section className="w-full max-w-7xl mx-auto py-2 h-auto">
+    <section className="w-full max-w-7xl mx-auto h-auto">
       <div className="bg-[radial-gradient(circle,#E7EFFF_0%,#E9EDF7_100%)] h-102 rounded-xl grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Section */}
         <div>

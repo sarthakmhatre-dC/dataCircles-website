@@ -141,7 +141,7 @@ export default function ScrollAccordion() {
     // Because it's on the pinned element, it stays visible and consistent in all states.
     <div
       ref={pinSpacerRef}
-      className="w-full relative bg-white py-24"
+      className="w-full relative bg-white py-30"
     >
       {/* LAYOUT: max-w-[1440px] and grid-cols-[1fr_685px] ensures the right column is exactly 685px */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_685px] gap-10">

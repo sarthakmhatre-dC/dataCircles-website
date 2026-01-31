@@ -70,7 +70,7 @@ export default function Pricing() {
   return (
     <main className="w-full min-h-screen text-black">
       {/* ================= HERO / INTRO ================= */}
-      <section className="text-center mb-30">
+      <section className="text-center pb-30">
         <LabelPill
           label="DataCircle's Pricing"
           dotColor="bg-blue-500"
@@ -88,7 +88,7 @@ export default function Pricing() {
       <PricingSection />
 
       {/* ================= COMPARISON TABLE ================= */}
-      <section className="mt-50 mb-30">
+      <section className="pt-30 pb-30">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center text-2xl font-semibold mb-8">
             Compare Plans
@@ -130,7 +130,7 @@ export default function Pricing() {
       </section>
 
       {/* ================= FAQ ================= */}
-      <section className="max-w-7xl mx-auto mb-30">
+      <section className="max-w-7xl mx-auto pb-30 pt-30">
         <FAQSection
           title="Start making your business easier with DataCircles"
           subtitle="Here are answers to some common questions about pricing and billing."
@@ -158,7 +158,7 @@ export default function Pricing() {
       </section>
 
       {/* ================= FINAL CTA ================= */}
-      <section className="mt-20 mb-20">
+      <section className="pt-30 ">
         <SimpleCTA
           heading="Get started with DataCircles"
           subheading="Start your 7-day free trial today."

@@ -1,31 +1,45 @@
 import { Link } from "react-router-dom";
 
 export default function FeatureCard({
-  icon = null,
+  icon = "",
   title = "",
   description = "",
   link = "#",
 }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition">
-      {/* Icon / Placeholder */}
-      <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white text-lg mb-4">
-        {icon || <span>★</span>} {/* Replace icon later as needed */}
+    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-md transition-all duration-300 group flex flex-col h-full">
+      {/* Icon Container */}
+      <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mb-8 group-hover:bg-blue-700 transition-colors duration-300 p-2">
+        {icon ? (
+          <img
+            src={icon}
+            alt={`${title} icon`}
+            className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110 brightness-0 invert"
+            onError={(e) => { e.currentTarget.src = "https://cdn-icons-png.flaticon.com/512/1828/1828884.png"; }}
+          />
+        ) : (
+          <span className="text-white text-xl">★</span>
+        )}
       </div>
 
-      {/* Title */}
-      <h3 className="text-base font-semibold mb-1">{title}</h3>
+      {/* Content */}
+      <div className="flex flex-col flex-1">
+        <h3 className="para-1 font-bold text-[#2D334A] mb-1 group-hover:text-blue-600 transition-colors tracking-[-0.05rem]">
+          {title}
+        </h3>
 
-      {/* Desc */}
-      <p className="text-sm text-gray-600 mb-3">{description}</p>
+        <p className="para-3 text-gray-500 leading-relaxed mb-2 flex-1 tracking-[-0.05rem]">
+          {description}
+        </p>
 
-      {/* Learn More Link */}
-      <Link
-        to={link}
-        className="text-blue-600 text-sm font-medium hover:underline"
-      >
-        Learn More
-      </Link>
+        {/* Learn More Link */}
+        <Link
+          to={link}
+          className="text-[#007AFF] text-sm font-semibold flex items-center gap-1 hover:underline mt-auto"
+        >
+          Learn More
+        </Link>
+      </div>
     </div>
   );
 }

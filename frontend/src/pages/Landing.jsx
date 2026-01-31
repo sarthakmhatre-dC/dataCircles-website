@@ -102,7 +102,7 @@ const Landing = () => {
         />
 
         {/* 🔽 RESPONSIVE CHANGE: font sizes for mobile/tablet */}
-        <h1 className="heading-1 font-semibold mt-8 mb-2 letter-s tracking-[-4px]">
+        <h1 className="heading-1 font-semibold mt-8 mb-2 tracking-[-4px]">
           Run Your Sales and Accounts <br />
           in One Simple Tool
         </h1>
@@ -133,7 +133,7 @@ const Landing = () => {
       {/* SECTION 2: IMAGE          */}
       {/* -------------------------------------------------- */}
 
-      <section className="w-full max-w-7xl h-[220px] sm:h-[350px] md:h-[650px] mb-20 bg-white rounded-4xl overflow-hidden">
+      <section className="w-full max-w-7xl h-[220px] sm:h-[350px] md:h-[650px] mb-20 bg-white rounded-4xl overflow-hidden p-3">
         <img
           src="/assets/Home/UserDashboard.png"
           className="w-full h-fit rounded-2xl"
@@ -187,7 +187,7 @@ const Landing = () => {
 
       {/* Replace above with <img src="" /> anytime */}
       {/* Section for testimonials */}
-      <section className="w-full  bg-black">
+      <section className="w-full pt-30 pb-30 bg-black">
         <VideoTestimonialSection
           videos={[
             {
@@ -239,7 +239,7 @@ const Landing = () => {
         </div>
 
         {/* ---- Bento Grid Section ---- */}
-        <BentoGrid items={bentoItems} className="py-6 mb-30" />
+        <BentoGrid items={bentoItems} className="py-6" />
       </section>
 
       {/* Accordation */}
@@ -271,17 +271,19 @@ const Landing = () => {
       {/* <SidebarPreviewAccordion />
       </section> */}
 
-      <section className="w-full mb-30">
+      <section className="w-full">
         {/* No margins, no max-width here. The component handles it self-contained. */}
         <ScrollAccordion />
       </section>
 
-      <PricingSection />
-      <SalesCard image={yahaKaCTA}/>
+      <section className="w-full pt-30 pb-30 space-y-10">
+        <PricingSection />
+        <SalesCard image={yahaKaCTA}/>
+      </section>
       {/* -------------------------------------------------- */}
       {/* SECTION 6: FAQ SECTION (Your Demo Layout)         */}
       {/* -------------------------------------------------- */}
-      <section className="w-full max-w-7xl mb-20 mt-30 items-center text-center flex flex-col">
+      <section className="w-full max-w-7xl mb-30 mt-30 items-center text-center flex flex-col">
         <FAQSection
           title={
             <>
@@ -313,7 +315,7 @@ const Landing = () => {
       {/* -------------------------------------------------- */}
       {/* SECTION 7: SIMPLE CTA SECTION (Your Demo Layout)  */}
       {/* -------------------------------------------------- */}
-      <section className="w-full max-w-7xl items-center text-center flex flex-col">
+      <section className="w-full max-w-7xl items-center text-center flex flex-col mt-30">
         <LabelPill label="Start Today" dotColor="bg-blue-500" className="mb-10"/>
         <SimpleCTA
           heading={

@@ -139,7 +139,7 @@ export default function FAQSection({
 
   return (
     <section
-      className={`w-full flex justify-center mt-10 py-12 md:py-16 mb-16 ${sectionClass}`}
+      className={`w-full flex justify-center ${sectionClass}`}
     >
       {/* CENTER CONTAINER */}
       <div className="w-full mx-auto flex flex-col gap-20 md:flex-row">

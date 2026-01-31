@@ -4,6 +4,9 @@ import FAQSection from "../components/feature/FAQSection";
 import { useState, useMemo } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import SortByDown from "/assets/datavault/SortByDown.png";
+import Sorting from "/assets/datavault/Sorting.png";
+import Search from "/assets/datavault/Search.png";
 
 // import modular data
 import dataVault from "../data/dataVault";
@@ -82,26 +85,37 @@ export default function DataVault() {
     return data;
   }, [items, search, selectedCategories, sortBy]);
 
-  const yahaKaCTA = "/assets/dashboard1.png";
+  const yahaKaCTA = "/assets/Home/UserDashboard.png";
+
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
+
+  const sortOptions = [
+    { label: 'Sort: A → Z', value: 'asc' },
+    { label: 'Sort: Z → A', value: 'desc' }
+  ];
+
+  // Find the label for the currently selected value
+  const currentSortLabel = sortOptions.find(opt => opt.value === sortBy)?.label || 'Sort By';
 
   return (
     <main className="bg-transparent px-4 py-2">
       {/* PAGE HEADER */}
-      <section className="py-10 text-center max-w-4xl mx-auto mt-2 mb-10">
+      <section className="w-full text-center max-w-7xl mx-auto mb-10">
         <LabelPill label="Resources" dotColor="bg-blue-500" />
-        <h1 className="h2 mt-4 mb-4">
-          Where Indian Businesses Learn, Grow, and Build Smarter Systems
+        <h1 className="heading-1 font-semibold mt-8 mb-2 tracking-[-4px]">
+          DataCircles Vault
         </h1>
-        <p className="text-gray-500 p2 px-4">
-          Welcome to the DataCircles Vault a growing library of guides,
-          templates, playbooks, and tools designed to help business owners run
-          operations, manage clients, and streamline invoicing more efficiently
+        <p className="text-gray-600 para-1 mt-3">
+          Welcome to the DataCircles Vault a growing library of guides, templates, playbooks,<br />
+          and tools designed to help business owners run operations, manage clients, <br />
+          and streamline invoicing more efficiently
         </p>
       </section>
 
       {/* MAIN SECTION */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-16">
+      <section className="w-full max-w-7xl mx-auto px-6 pt-30 pb-30 grow">
         {/* ---------------------- TOP TABS ---------------------- */}
+        {/* Change 'flex-wrap' to 'flex' and add 'w-full' to the container */}
         <div className="flex flex-wrap gap-3 mb-6">
           {tabList.map((tab) => (
             <button
@@ -111,15 +125,12 @@ export default function DataVault() {
                 setSelectedCategories([]);
                 setSearch("");
               }}
-              className={`
-                px-4 py-2 rounded-lg border text-sm transition
-                ${
-                  activeTab === tab
-                    ? "bg-blue-600 text-white border-blue-600"
-                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+              className={`flex-1 px-4 py-2 rounded-lg border text-sm transition shadow-md text-nowrap
+                ${activeTab === tab
+                  ? "bg-blue-600 text-white border-blue-600"
+                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
                 }
-              `}
-            >
+              `}>
               {tab}
             </button>
           ))}
@@ -127,40 +138,57 @@ export default function DataVault() {
 
         {/* ---------------------- SEARCH + CATEGORY + SORT ---------------------- */}
         {activeTab && (
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-            {/* Search Bar */}
-            <input
-              type="text"
-              placeholder="Search resources..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full md:w-1/2 px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
-            />
+          <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8 w-full">
+            {/* Search Bar Container */}
+            <div className="relative flex-1 group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <img
+                  src="/assets/datavault/Search.png"
+                  alt="search"
+                  className="w-5 h-5 object-contain opacity-50 group-focus-within:opacity-100 transition-opacity"
+                />
+              </div>
+              <input
+                type="text"
+                placeholder="Search Resources..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-11 pr-4 py-2.5 border border-gray-200 rounded-xl shadow-sm 
+                bg-linear-to-r from-white to-[#70A2FF]/15
+                focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400"
+              />
+            </div>
 
-            {/* Category + Sort */}
-            <div className="flex gap-4 items-center">
+            {/* Filters Container */}
+            <div className="flex gap-3 items-center">
               {/* CATEGORY DROPDOWN */}
               <div className="relative">
                 <button
                   onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
-                  className="px-4 py-2 border rounded-lg flex items-center gap-2 bg-white shadow-sm"
+                  className="px-5 py-2.5 border border-gray-200 rounded-xl flex items-center gap-2.5 bg-white shadow-sm hover:bg-gray-50 transition-colors font-medium text-gray-700 whitespace-nowrap"
                 >
-                  Category <ChevronDown size={18} />
+                  <img src="/assets/datavault/SortByDown.png" alt="category" className="w-5 h-5 object-contain" />
+                  Category
+                  <ChevronDown
+                    className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${showCategoryDropdown ? "rotate-180" : "rotate-0"
+                      }`}
+                  />
                 </button>
 
                 {showCategoryDropdown && (
-                  <div className="absolute z-20 mt-2 w-64 bg-white border rounded-lg shadow-lg max-h-72 overflow-y-auto p-3">
+                  <div className="absolute right-0 z-30 mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-xl max-h-72 overflow-y-auto p-3 animate-in fade-in zoom-in duration-200">
                     {categoryOptions.map((cat) => (
                       <label
                         key={cat}
-                        className="flex items-center gap-2 py-1 cursor-pointer"
+                        className="flex items-center gap-3 px-2 py-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors"
                       >
                         <input
                           type="checkbox"
+                          className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 border-gray-300"
                           checked={selectedCategories.includes(cat)}
                           onChange={() => toggleCategory(cat)}
                         />
-                        <span>{cat}</span>
+                        <span className="text-sm text-gray-700">{cat}</span>
                       </label>
                     ))}
                   </div>
@@ -168,14 +196,44 @@ export default function DataVault() {
               </div>
 
               {/* SORT BY */}
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 border rounded-lg shadow-sm bg-white"
-              >
-                <option value="asc">Sort: A → Z</option>
-                <option value="desc">Sort: Z → A</option>
-              </select>
+              <div className="relative">
+                {/* The Trigger Button - Styled exactly like Category */}
+                <button
+                  onClick={() => setShowSortDropdown(!showSortDropdown)}
+                  className="px-5 py-2.5 border border-gray-200 rounded-xl flex items-center gap-2.5 bg-white shadow-sm hover:bg-gray-50 transition-colors font-medium text-gray-700 whitespace-nowrap"
+                >
+                  <img src="/assets/datavault/Sorting.png" alt="sort" className="w-5 h-5 object-contain" />
+
+                  <span>{currentSortLabel}</span>
+
+                  <ChevronDown
+                    size={18}
+                    className={`text-gray-400 transition-transform duration-200 ${showSortDropdown ? "rotate-180" : "rotate-0"
+                      }`}
+                  />
+                </button>
+
+                {/* The Dropdown Menu */}
+                {showSortDropdown && (
+                  <div className="absolute right-0 z-30 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-xl p-2 animate-in fade-in zoom-in duration-200">
+                    {sortOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => {
+                          setSortBy(option.value);
+                          setShowSortDropdown(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${sortBy === option.value
+                            ? "bg-blue-50 text-blue-600 font-semibold"
+                            : "text-gray-700 hover:bg-gray-50"
+                          }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -183,7 +241,7 @@ export default function DataVault() {
         {/* ---------------------- GRID SECTION ---------------------- */}
         {activeTab && (
           <>
-            <h2 className="text-2xl font-semibold mb-6">{activeTab}</h2>
+            <h2 className="heading-3 font-medium mb-6">{activeTab}</h2>
 
             {filteredItems.length === 0 ? (
               <p className="text-gray-500 text-center py-10">
@@ -193,20 +251,23 @@ export default function DataVault() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredItems.map((item, idx) => {
                   const slug = slugify(item.title);
-
                   return (
                     <Link
                       to={`/resources/${slug}`}
                       key={idx}
-                      className="p-4 border rounded-lg shadow-sm bg-white hover:shadow-lg transition block"
+                      // Added 'flex flex-col' to the container classes
+                      className="p-4 border rounded-lg shadow-sm bg-white hover:shadow-lg transition flex flex-col h-full"
                     >
                       <div className="w-full h-40 bg-gray-200 rounded-lg mb-4"></div>
 
-                      <h3 className="font-semibold text-lg">{item.title}</h3>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <h3 className="font-semibold para-1 mb-2">{item.title}</h3>
+
+                      <p className="para-4 text-gray-600 mt-1">
                         {item.description}
                       </p>
-                      <p className="text-xs text-blue-600 mt-2 font-medium">
+
+                      {/* Added 'mt-auto' to this element */}
+                      <p className="para-5 text-blue-600 mt-auto pt-4 font-medium">
                         Category: {item.category}
                       </p>
                     </Link>
@@ -219,53 +280,73 @@ export default function DataVault() {
       </section>
 
       {/* TILLLLLLLL HEREEEEEEEEEEEEEEE */}
-      <section className=" max-w-7xl mx-auto mb-24 px-6">
+      <section className=" max-w-7xl mx-auto pb-30 px-6">
         {/* Section Label */}
-        <p className="font-light text-blue-500 p4 mb-2">Free Resources</p>
+        <p className="font-medium text-blue-500 para-1 mb-5">Free Resources</p>
 
         {/* Heading */}
-        <h2 className="h3  mb-4">
-          Everything You Need to Organize Your Business Better
+        <h2 className="heading-3 tracking-[-0.125rem] font-medium mb-5">
+          Everything You Need to <br />
+          Organize Your Business Better
         </h2>
 
         {/* Subtext */}
-        <p className="text-gray-600 p1 mb-10 leading-relaxed">
-          Each resource is built from real workflows used by fast-growing Indian
-          service businesses so you can <br /> stop guessing and start
-          implementing.
+        <p className="text-gray-600 para-1 mb-10 leading-relaxed">
+          Each resource is built from real workflows used by fast-growing Indian <br />
+          service businesses so you can stop guessing and start implementing.
         </p>
 
         {/* 3-Column Feature Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
           {/* CARD 1 */}
-          <div className="bg-gray-100 rounded-xl p-8 h-[280px] flex flex-col justify-end">
-            <h3 className="h4 font-semibold mb-2">
-              {" "}
+          <div className="bg-gray-100 rounded-xl p-6 h-[380px] flex flex-col justify-end">
+            <div className="mb-2">
+              <img
+                src="/assets/about/EmpowerMSMEs.png" // update path if needed
+                alt="Empower Indian MSMEs"
+                className="w-fit h-fit mx-auto mb-5"
+              />
+            </div>
+            <h3 className="heading-5 tracking-[-0.125rem] font-medium mb-2">
               Business Operations Playbooks
             </h3>
-            <p className="p4 text-gray-600 leading-relaxed">
+            <p className="para-5 text-gray-600 tracking-tight">
               Step-by-step guides to organize clients, projects, invoices, and
               daily workflows with zero chaos
             </p>
           </div>
 
           {/* CARD 2 */}
-          <div className="bg-gray-100 rounded-xl p-8 h-[280px] flex flex-col justify-end">
-            <h3 className="h4 font-semibold mb-2">
+          <div className="bg-gray-100 rounded-xl p-6 h-[380px] flex flex-col justify-end">
+            <div className="mb-2">
+              <img
+                src="/assets/about/EmpowerMSMEs.png" // update path if needed
+                alt="Empower Indian MSMEs"
+                className="w-fit h-fit mx-auto mb-5"
+              />
+            </div>
+            <h3 className="heading-5 tracking-[-0.125rem] font-medium mb-2">
               Invoicing & Cashflow Templates
             </h3>
-            <p className="p4 text-gray-600 leading-relaxed">
+            <p className="para-5 text-gray-600 tracking-tight">
               Ready-to-use invoice formats, payment trackers, and cashflow tools
               built for Indian GST workflows
             </p>
           </div>
 
           {/* CARD 3 */}
-          <div className="bg-gray-100 rounded-xl p-8 h-[280px] flex flex-col justify-end">
-            <h3 className="h4 font-semibold mb-2">
+          <div className="bg-gray-100 rounded-xl p-6 h-[380px] flex flex-col justify-end">
+            <div className="mb-2">
+              <img
+                src="/assets/about/EmpowerMSMEs.png" // update path if needed
+                alt="Empower Indian MSMEs"
+                className="w-fit h-fit mx-auto mb-5"
+              />
+            </div>
+            <h3 className="heading-5 tracking-[-0.125rem] font-medium mb-2">
               CRM Funnels & Sales Sheets
             </h3>
-            <p className="p4 text-gray-600 leading-relaxed">
+            <p className="para-5 text-gray-600 tracking-tight">
               Practical sales scripts, pipeline structures, and follow-up
               systems to convert more leads consistently.
             </p>
@@ -273,7 +354,7 @@ export default function DataVault() {
         </div>
       </section>
 
-      <section className="w-full max-w-7xl mx-auto mb-24 px-6">
+      <section className="w-full max-w-7xl mx-auto pt-30 pb-30 px-6">
         <FAQSection
           tag="Questions"
           /* title={
@@ -311,7 +392,7 @@ export default function DataVault() {
       </section>
       {/* CONTENT CARD */}
       {/* Dynamic one */}
-      <section className=" items-center text-center  w-full mx-auto   ">
+      <section className=" items-center text-center w-full mx-auto pt-30">
         <LabelPill
           label="Get Started"
           dotColor="bg-blue-500"
@@ -319,7 +400,8 @@ export default function DataVault() {
         />
         <div className=" flex justify-center items-center  w-full mt-0">
           <SimpleCTA
-            heading={<>Ready to Organize Your Business the Right Way?</>}
+            heading={<>Ready to Organize Your <br />
+              Business the Right Way?</>}
             subheading={
               <>
                 Download the tools, implement the systems, and take your
@@ -337,7 +419,7 @@ export default function DataVault() {
               },
             ]}
             image={yahaKaCTA}
-            className="px-4 md:px-6 max-w-7xl py-12 md:py-16 items-center"
+            className="px-4 md:px-6 max-w-7xl pt-12 items-center"
           />
         </div>
       </section>

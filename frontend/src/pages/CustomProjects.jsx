@@ -267,7 +267,7 @@ const CustomProjects = () => {
             {/* -------------------------------------------------- */}
             {/* SECTION 6: FAQ SECTION (Your Demo Layout)         */}
             {/* -------------------------------------------------- */}
-            <section className="w-full max-w-7xl mb-20 items-center text-center flex flex-col">
+            <section className="w-full max-w-7xl mb-20 items-center text-center flex flex-col pt-30 pb-30">
                 <FAQSection
                     title={
                         <>
@@ -299,7 +299,7 @@ const CustomProjects = () => {
             {/* -------------------------------------------------- */}
             {/* SECTION 7: SIMPLE CTA SECTION (Your Demo Layout)  */}
             {/* -------------------------------------------------- */}
-            <section className="w-full max-w-7xl justify-center items-center text-center flex flex-col h-auto">
+            <section className="w-full max-w-7xl justify-center items-center text-center flex flex-col h-auto mt-30">
                 <LabelPill label="Start Today" dotColor="bg-blue-500" className="mb-10" />
                 <SimpleCTA
                     heading={

@@ -226,9 +226,9 @@ export default function PricingSection() {
   ];
 
   return (
-    <section className="w-full max-w-7xl mx-auto text-center mb-10">
+    <section className="w-full max-w-7xl mx-auto text-center">
       {/* Heading */}
-      <p className="para-1 text-blue-500 font-medium mb-10">
+      <p className="para-1 text-blue-500 font-medium mb-8">
         Simple Plans. Honest Pricing.
       </p>
 
@@ -236,7 +236,7 @@ export default function PricingSection() {
         Pay Only for What You Need
       </h2>
 
-      <p className="text-gray-500 mb-15 para-1">
+      <p className="text-gray-500 mb-8 para-1">
         <span className="tracking-[-0.05rem]">
         No heavy upfront cost. No complex contracts.
         </span>
@@ -319,7 +319,7 @@ export default function PricingSection() {
                     </p>
                     <p className="text-gray-400 para-3 mt-3">Per User / Month</p>
                     <p className="text-gray-500 para-5 mt-1">
-                      Billed Annually
+                      Billed Annually · Exclusive of GST
                     </p>
                   </>
                 )}

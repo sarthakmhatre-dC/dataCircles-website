@@ -10,7 +10,10 @@ import {
   PictureInPicture,
   X,
   SkipForward,
-  Gauge
+  Gauge,
+  Volume2,
+  VolumeX,
+  Volume1
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import LightLeak from '/assets/LightLeak.png'
@@ -65,6 +68,7 @@ const FloatingPipPlayer = ({
         onTimeUpdate={() => setProgress((videoRef.current.currentTime / videoRef.current.duration) * 100)}
         onEnded={() => { setIsPlaying(false); setIsEnded(true); }}
         onClick={togglePlay}
+
       />
 
       <button
@@ -118,6 +122,8 @@ const SlideVideoPlayer = ({
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [volume, setVolume] = useState(1); // 1 is 100% volume
+  const [isMuted, setIsMuted] = useState(false);
 
   // Interaction States
   const [showControls, setShowControls] = useState(false);
@@ -176,6 +182,30 @@ const SlideVideoPlayer = ({
     // Keep menu open so user sees change, or close it? usually keep open or let user click out
   };
 
+  const handleVolumeChange = (e) => {
+    e.stopPropagation();
+    const newVolume = parseFloat(e.target.value);
+    setVolume(newVolume);
+    if (videoRef.current) {
+      videoRef.current.volume = newVolume;
+      videoRef.current.muted = newVolume === 0;
+    }
+    setIsMuted(newVolume === 0);
+  };
+
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    if (!videoRef.current) return;
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    videoRef.current.muted = newMutedState;
+    if (newMutedState) setVolume(0);
+    else {
+      setVolume(1);
+      videoRef.current.volume = 1;
+    }
+  };
+
   // PiP Placeholder
   if (isPipActive && isActive) {
     return (
@@ -209,10 +239,15 @@ const SlideVideoPlayer = ({
           setCurrentTime(videoRef.current.currentTime);
           setProgress((videoRef.current.currentTime / videoRef.current.duration) * 100);
         }}
-        onLoadedMetadata={(e) => setDuration(e.target.duration)}
+        onLoadedMetadata={(e) => {
+          setDuration(e.target.duration);
+          // Ensure video starts with the current state volume
+          e.target.volume = volume;
+          e.target.muted = isMuted;
+        }}
         onEnded={() => setIsPlaying(false)}
         loop
-        muted={false}
+        muted={isMuted}
         playsInline
         onClick={togglePlay} // Clicking video surface toggles play
       />
@@ -289,6 +324,31 @@ const SlideVideoPlayer = ({
 
             <div className="flex items-center gap-3">
               {/* Menu (Action) */}
+
+              {/* --- Volume Control --- */}
+              <div className="flex items-center gap-2 group/volume mr-2">
+                <button onClick={toggleMute} className="text-white hover:text-blue-400 transition-colors">
+                  {isMuted || volume === 0 ? (
+                    <VolumeX className="w-5 h-5" />
+                  ) : volume < 0.5 ? (
+                    <Volume1 className="w-5 h-5" />
+                  ) : (
+                    <Volume2 className="w-5 h-5" />
+                  )}
+                </button>
+
+                {/* Slider that appears/expands on hover */}
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={isMuted ? 0 : volume}
+                  onChange={handleVolumeChange}
+                  className="w-0 overflow-hidden group-hover/volume:w-20 transition-all duration-300 h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+              </div>
+
               <div className="relative">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
@@ -369,7 +429,7 @@ export default function VideoTestimonialSwiper({
   const handlePipClose = () => setPipActive(false);
 
   return (
-    <section className="w-full bg-transparent text-white pb-20 pt-40 flex flex-col items-center relative z-10">
+    <section className="w-full bg-transparent text-white pb-30 flex flex-col items-center relative z-10">
 
       {/* <img
         src={LightLeak}
@@ -378,9 +438,9 @@ export default function VideoTestimonialSwiper({
       /> */}
 
       {/* HEADER */}
-      <div className="w-full max-w-7xl px-6 lg:px-0 mb-10 z-10 relative">
-        <p className="para-1 text-blue-500 font-medium mb-10 tracking-wide">{tag}</p>
-        <h2 className="heading-3 mb-10 tracking-tight text-white ">{title}</h2>
+      <div className="w-full max-w-7xl px-6 lg:px-0 mb-10 z-10 relative pt-10">
+        <p className="para-1 text-blue-500 font-medium mb-8 tracking-wide">{tag}</p>
+        <h2 className="heading-3 mb-8 tracking-tight text-white ">{title}</h2>
         <p className="text-gray-400 para-1 max-w-2xl leading-relaxed">{subtitle}</p>
       </div>
 

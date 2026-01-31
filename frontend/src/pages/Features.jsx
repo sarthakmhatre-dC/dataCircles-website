@@ -15,122 +15,101 @@ import { invoiceFeatures } from "../data/invoiceFeatures";
 export default function Features() {
   const [selectedTab, setSelectedTab] = useState("crm");
 
-  const yahaKaCTA = "/assets/dashboard1.png";
+  const yahaKaCTA = "/assets/Home/UserDashboard.png";
 
-  const dealskaSRC = "/assets/Deals-KanbanVie4w.png";
+  const dealskaSRC = "/assets/features/puzzle.png";
 
   return (
-    <main className=" text-gray-900">
+    <main className="flex justify-center flex-col items-center w-screen">
       {/* ---------------------------------------------------- */}
       {/* SECTION 1 — Tagline + Title + Paragraph              */}
       {/* ---------------------------------------------------- */}
-      <section className="px-6 py-16 text-center max-w-6xl mx-auto  ">
+      <section className="w-full max-w-7xl mb-10 px-6 items-center text-center flex flex-col ">
         <LabelPill label="Platform Features" dotColor="bg-blue-500" />
-        <h1 className="h2 sm:text-2xl mt-2 leading-tight mb-4">
+        <h1 className="heading-1 font-semibold mt-8 mb-2 tracking-[-4px]">
           Everything You Need to Manage <br /> Customers and Money In One
           Platform{" "}
         </h1>
 
-        <p className="text-gray-600 mb-10 p1">
+        <p className="text-gray-600 para-1 mt-3">
           DataCircles brings CRM and Invoicing together in one simple cloud tool
           built for Indian businesses.
           <br />
           No clutter. No extra software. Just the features you actually use
           every day
         </p>
+      </section>
 
-        {/* Large hero image placeholder */}
-        {/* <div className="w-full h-72 md:h-96 bg-gray-200 rounded-xl mx-auto" /> */}
+      {/* ---------------------------------------------------- */}
+      {/* SECTION 2 — Image             */}
+      {/* ---------------------------------------------------- */}
+      <section className="w-full max-w-7xl h-[220px] sm:h-[350px] md:h-[650px] mb-20 bg-white rounded-4xl overflow-hidden mt-10 p-3 border border-gray-200">
         <img
-          src={dealskaSRC}
-          alt="Feature page image"
-          className="w-full h-full object-cover md:h-96 bg-gray-200 rounded-xl mx-auto"
+          src="/assets/Home/ContactsKanban.png"
+          className="w-fit h-fit rounded-2xl"
+          alt="cta visual"
         />
       </section>
 
       {/* ---------------------------------------------------- */}
-      {/* SECTION 2 — CRM / Invoicing Toggle + Image + Content */}
+      {/* SECTION 3 — CRM / Invoicing Toggle + Image + Content */}
       {/* ---------------------------------------------------- */}
-      <section className="px-6 py-20 max-w-6xl mx-auto">
+      <section className="w-full mt-10 max-w-7xl mx-auto">
         {/* Toggle Buttons */}
-        <div className="flex justify-center gap-3 mb-8">
-          <Button
-            className={`px-6 hover:bg-blue-200 hover:text-blue-900 ${
-              selectedTab === "crm"
-                ? "bg-blue-600 text-white rounded-lg text-md"
-                : "bg-gray-300 text-blue-900 rounded-lg text-md border-blue-900 shadow-xl"
-            }`}
+        <div className="flex justify-center gap-4 mb-10">
+          <button
+            className={`px-8 py-3 transition-all duration-300 font-medium text-sm leading-none ${selectedTab === "crm"
+              ? "bg-[#007AFF] text-white rounded-[0.875rem] shadow-[0px_4px_12px_rgba(0,122,255,0.2)]"
+              : "bg-transparent text-[#2D334A] border border-[#B0B0B0] rounded-2xl hover:bg-gray-50"
+              }`}
             onClick={() => setSelectedTab("crm")}
           >
-            CRM
-          </Button>
+            CRM Features
+          </button>
 
-          <Button
-            className={`px-6 hover:bg-blue-200 hover:text-blue-900 ${
-              selectedTab === "invoicing"
-                ? "bg-blue-600 text-white rounded-lg p2"
-                : "bg-gray-300 text-blue-900 rounded-lg text-md border-blue-900 shadow-xl"
-            }`}
+          <button
+            className={`px-8 py-3 transition-all duration-300 font-medium text-sm leading-none ${selectedTab === "invoicing"
+              ? "bg-[#007AFF] text-white rounded-[0.875rem] shadow-[0px_4px_12px_rgba(0,122,255,0.2)]"
+              : "bg-transparent text-[#2D334A] border border-[#B0B0B0] rounded-2xl hover:bg-gray-50"
+              }`}
             onClick={() => setSelectedTab("invoicing")}
           >
-            Invoicing
-          </Button>
+            Invoicing Features
+          </button>
         </div>
 
-        {/* Wrapper so we can add animations / effects later */}
+        {/* Wrapper for Sections */}
         <div className="relative">
           {/* CRM Section */}
           {selectedTab === "crm" && (
-            <div className="space-y-8">
-              {/* Large CRM image */}
-              {/* <div className="w-full h-80 bg-gray-200 rounded-xl" /> */}
+            <div className="animate-in fade-in duration-500 ">
+              <section className="mt-10 w-full rounded-4xl border-gray-200/50">
+                <h2 className="heading-3 font-semibold text-[#2D334A] mb-5 px-2 tracking-tight">
+                  CRM Features
+                </h2>
 
-              {/* CRM description + grid */}
-              {/* <section className="mt-10 "> */}
-              <section className="mt-10 w-full h-full bg-gray-200 rounded-xl">
-                <h2 className="h4 mb-2 p-2">CRM Features</h2>
-
-                <div>
+                <div className="w-full">
                   <FeatureDrawer
-                    features={
-                      selectedTab === "crm"
-                        ? crmFeaturesList
-                        : invoicingFeaturesList
-                    }
+                    features={crmFeaturesList}
                   />
                 </div>
-
-                {/* CRM Feature Grid (grey boxes) */}
-                {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {Array(6)
-                    .fill("")
-                    .map((_, idx) => (
-                      <div key={idx} className="h-40 bg-gray-200 rounded-xl" />
-                    ))}
-                </div> */}
               </section>
             </div>
           )}
 
           {/* Invoicing Section */}
           {selectedTab === "invoicing" && (
-            <div className="space-y-6">
-              {/* <div className="w-full h-80 bg-gray-200 rounded-xl" /> */}
+            <div className="animate-in fade-in duration-500">
+              <section className="mt-10 w-full rounded-[2.5rem] border-gray-200/50">
+                <h2 className="heading-3 font-semibold text-[#2D334A] mb-5 px-2 tracking-tight">
+                  Invoicing Features
+                </h2>
 
-              <section className="mt-10 w-full h-full bg-gray-200 rounded-xl">
-                <h2 className="h4  mb-2 text-black p-2">Invoicing Features</h2>
-
-                <div>
-                  <FeatureDrawer features={invoicingFeaturesList} />
+                <div className="w-full">
+                  <FeatureDrawer
+                    features={invoicingFeaturesList}
+                  />
                 </div>
-                {/* Invoicing Feature Grid */}
-                {/* {Array(6)
-                    .fill("")
-                    .map((_, idx) => (
-                      <div key={idx} className="h-40 bg-gray-200 rounded-xl" />
-                    )) 
-                }
-                     */}
               </section>
             </div>
           )}
@@ -138,48 +117,74 @@ export default function Features() {
       </section>
 
       {/* ---------------------------------------------------- */}
-      {/* SECTION 3 —  Main Block before 2 grids (Image + Text)    */}
+      {/* SECTION 4 —  Main Block before 2 grids (Image + Text)    */}
       {/* ---------------------------------------------------- */}
-      <section className="px-6 py-20 max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-        {/* Left text section */}
-        <div>
-          <h2 className="h3  mb-32">Stop Managing Your Business in Pieces</h2>
-          <h4 className="text-2xl  mb-4">
-            CRM Alone Is Not Enough. Invoicing Alone Is Not Enough.
+      <section className="w-full pb-30 pt-30 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-0">
+        {/* Left text section - Fixed width */}
+        <div className="w-full max-w-130 shrink-0">
+          <h2 className="heading-3 tracking-[-0.125rem] font-semibold mb-50">
+            Stop Managing Your <br /> Business in Pieces
+          </h2>
+
+          <h4 className="heading-4 tracking-[-0.125rem] mb-5 font-medium">
+            CRM Alone Is Not Enough.<br />
+            Invoicing Alone Is Not Enough.
           </h4>
-          <p className="text-gray-600 mb-6 p2">
-            DataCircles connects sales and accounting in one clean flow so
-            nothing falls through the cracks
+          <p className="text-gray-600 mb-8 para-1">
+            DataCircles connects sales and accounting in one clean flow <br />
+            so nothing falls through the cracks
           </p>
 
-          <Button className="bg-blue-600 text-white px-6">
+          <button className="px-6 py-2 bg-[#007AFF] text-white rounded-lg hover:bg-blue-800 w-full sm:w-auto h-10 transition-colors">
             Book a Free Demo
-          </Button>
+          </button>
         </div>
 
-        {/* Right block */}
-        {/* <div className="w-full h-56 bg-gray-200 rounded-xl" /> */}
-        <img
-          src={dealskaSRC}
-          alt="Feature page image"
-          className="w-full h-56 rounded-xl object-cover md:h-96   mx-auto"
-        />
+        {/* Right block - Responsive gap and filling remaining space */}
+        <div className="w-full mt-10 md:mt-0 md:ml-16 grow">
+          {/* md:ml-16 provides exactly 4rem (16 * 0.25rem)
+        mb-[1.875rem] adds the specific margin requested 
+    */}
+          <div className="relative w-full mb-7.5">
+            <img
+              src={dealskaSRC}
+              alt="Feature page image"
+              className="w-fit h-fit rounded-2xl object-cover shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100"
+            />
+            {/* Optional: Subtle ambient glow to make the shadow "elegant" */}
+            <div className="absolute -inset-1 bg-linear-to-r from-transparent via-gray-100/20 to-transparent rounded-2xl blur-sm pointer-events-none" />
+          </div>
+        </div>
       </section>
+
 
       {/* ---------------------------------------------------- */}
       {/* SECTION 4 — CRM Features Grid (3×3)                        */}
       {/* ---------------------------------------------------- */}
-      <section className="px-6 py-20 max-w-6xl mx-auto">
-        <div className="w-full max-w-7xl mb-10">
-          <p className="text-blue-300 p3 mb-2">Complete Accounting Suite</p>
-          <h2 className="text-3xl font-medium mb-3">
-            Everything Your Business Needs to Bill, Track, and Get Paid
-          </h2>
-          <p className="text-gray-400 p3 max-w-xl">
-            From the first quote to the final payment, DataCircles handles your
-            full billing cycle in one place.
-          </p>
+      <section className="w-full pt-30 pb-30 max-w-7xl mx-auto">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-7xl mx-auto items-center">
+          {/* Left Side */}
+          <div className="text-left">
+            <p className="para-1 font-semibold text-blue-500 mb-5">
+              Complete Accounting Suite
+            </p>
+
+            <h2 className="heading-3 tracking-[-0.125rem] font-semibold mb-5">
+              Everything Your Business<br />
+              Needs to Bill, Track, and Get Paid
+            </h2>
+          </div>
+
+          {/* Right Side */}
+          <div className="text-right flex justify-end">
+            <p className="text-gray-400 leading-relaxed mt-25 para-2">
+              From the first quote to the final payment, DataCircles handles<br />
+              handles your full billing cycle in one place.No clutter.
+            </p>
+          </div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {invoiceFeatures.map((item, idx) => (
             <FeatureCard
@@ -196,22 +201,22 @@ export default function Features() {
       {/* ---------------------------------------------------- */}
       {/* SECTION 5 — Secondary Feature Block between 2 grids (Image + Text)    */}
       {/* ---------------------------------------------------- */}
-      <section className="px-6 py-20 max-w-6xl mx-auto">
+      <section className="w-full max-w-7xl mx-auto pb-30">
         <div className="bg-[#0d0d0f] rounded-xl w-full grid md:grid-cols-2 p-10 md:p-14 gap-10">
           {/* LEFT TEXT BLOCK */}
           <div className="space-y-4">
             {/* Small blue label */}
-            <p className="text-blue-400 text-sm font-medium">
+            <p className="text-blue-400 heading-5 font-medium mb-10">
               Built for Indian Workflows
             </p>
 
             {/* Heading */}
-            <h2 className="h4 md:h4 font-semibold text-white leading-tight">
+            <h2 className="heading-3 tracking-[-0.125rem] mb-8 font-semibold text-white leading-tight">
               Simple Enough for Daily Use. Powerful Enough for Growth
             </h2>
 
             {/* Description */}
-            <p className="text-gray-400 p3 text-base max-w-md">
+            <p className="text-gray-400 para-1 w-full mb-5">
               No steep learning curve. No heavy setup. Just log in and start
               managing your business better from day one.
             </p>
@@ -250,7 +255,7 @@ export default function Features() {
       {/* ---------------------------------------------------- */}
       {/* FAQ section        */}
       {/* ---------------------------------------------------- */}
-      <section className="px-6 py-20 max-w-6xl mx-auto">
+      <section className="pt-30 pb-30 max-w-7xl mx-auto">
         <FAQSection
           tag="Common Questions"
           title="Everything You Might Be Wondering About Our Features"
@@ -296,8 +301,8 @@ export default function Features() {
           </Button>
         </div>
       </section> */}
-      <section className=" mb-10 px-3 items-center text-center flex flex-col">
-        <LabelPill label="Get Started Today" dotColor="bg-blue-500" />
+      <section className="w-full max-w-7xl items-center text-center flex flex-col pt-30">
+        <LabelPill label="Get Started Today" dotColor="bg-blue-500" className="mb-10" />
         <SimpleCTA
           heading="Your Business Deserves a Smarter System"
           subheading="Join growing Indian businesses who switched from Excel, WhatsApp, and messy billing tools to one clean platform."

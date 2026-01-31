@@ -8,7 +8,7 @@ import LabelPill from "../components/common/LabelPill";
 import { InlineWidget } from "react-calendly";
 
 export default function Contact() {
-  const yahaKaCTA = "/assets/dashboard1.png";
+  const yahaKaCTA = "/assets/Home/UserDashboard.png";
 
   // We can use Formspree or another service later for handling form submissions
   return (
@@ -46,16 +46,19 @@ export default function Contact() {
       {/* SECTION 2 — Caledly                                  */}
       {/* ---------------------------------------------------- */}
 
-      <section className="py-16 text-center max-w-7xl mx-auto  ">
+      <section className="py-16 text-center max-w-7xl mx-auto w-full">
         <InlineWidget
           url="https://calendly.com/yash-mishra-datacircles/datacircles-demo?month=2025-12 "
-          styles={{ height: "700px" }}
+          styles={{ 
+            height: "700px",
+            width:"100%"
+           }}
         />
       </section>
       {/* ---------------------------------------------------- */}
       {/* SECTION 3 — GRID                                     */}
       {/* ---------------------------------------------------- */}
-      <section className="w-full max-w-7xl mx-auto mb-24 px-6">
+      <section className="w-full max-w-7xl mx-auto pb-30 px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* CARD 1 */}
           <div className="bg-gray-100 rounded-xl p-8 h-[380px] flex flex-col justify-end">
@@ -91,7 +94,7 @@ export default function Contact() {
       {/* ---------------------------------------------------- */}
       {/* SECTION 4 — FAQ DYNAMIC                              */}
       {/* ---------------------------------------------------- */}
-      <section className="w-full max-w-7xl mx-auto mb-24 px-6">
+      <section className="w-full max-w-7xl mx-auto pt-30 pb-30 px-6">
         <FAQSection
           tag="Questions"
           /* title={
@@ -127,11 +130,11 @@ export default function Contact() {
         />
       </section>
 
-      <section className=" items-center text-center  w-full mx-auto   ">
+      <section className="items-center text-center w-full mx-auto pt-30">
         <LabelPill
           label="Get Started"
           dotColor="bg-blue-500"
-          className="items-center"
+          className="items-center mb-10"
         />
         <div className=" flex justify-center items-center  w-full">
           <SimpleCTA
@@ -149,7 +152,7 @@ export default function Contact() {
               { label: "Talk to Support", href: "/book-a-demo" },
             ]}
             image={yahaKaCTA}
-            className="px-4 md:px-6 max-w-7xl py-12 md:py-16 items-center"
+            className="px-4 md:px-6 max-w-7xl items-center"
           />
         </div>
       </section>
